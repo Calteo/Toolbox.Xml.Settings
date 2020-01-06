@@ -39,8 +39,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="Toolbox.Xml.Serialization, Version=0.6.6.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Toolbox.Xml.Serialization.0.6.6\lib\net48\Toolbox.Xml.Serialization.dll</HintPath>
+    <Reference Include="Toolbox.Xml.Serialization, Version=0.6.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Toolbox.Xml.Serialization.0.6.7\lib\net48\Toolbox.Xml.Serialization.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -58,6 +58,7 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="SettingDiagram.cd" />
+    <None Include="Toolbox.Xml.Settings.nuspec" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

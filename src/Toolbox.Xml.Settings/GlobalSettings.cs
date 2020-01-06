@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Toolbox.Xml.Settings
 {
+    /// <summary>
+    /// Manages the settings for the application.
+    /// </summary>
     public class GlobalSettings : SettingStorage<GlobalSetting>
     {
         static GlobalSettings()

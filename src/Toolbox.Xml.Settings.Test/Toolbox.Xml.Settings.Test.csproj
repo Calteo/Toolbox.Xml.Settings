@@ -55,6 +55,7 @@
     <Compile Include="GlobalSettingTest.cs" />
     <Compile Include="SimpleGlobalSetting.cs" />
     <Compile Include="SimpleUserSetting.cs" />
+    <Compile Include="InterferenceTest.cs" />
     <Compile Include="UserSettingTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

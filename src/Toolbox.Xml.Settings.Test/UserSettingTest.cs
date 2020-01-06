@@ -21,8 +21,7 @@ namespace Toolbox.Xml.Settings.Test
         {
             var cut = UserSettings.Get<SimpleUserSetting>();
 
-            cut.Name = "Calteo";
-
+            cut.Name = "Some Name";
             cut.Save();
 
             var read = UserSettings.Get<SimpleUserSetting>(null, true);
@@ -30,5 +29,18 @@ namespace Toolbox.Xml.Settings.Test
             Assert.AreEqual(cut.Name, read.Name);
         }
 
+        [TestMethod]
+        public void TestClear()
+        {
+            var cut = UserSettings.Get<SimpleUserSetting>();
+
+            cut.Name = "Some Name";
+            cut.Save();
+            UserSettings.Clear();
+
+            var read = UserSettings.Get<SimpleUserSetting>();
+            
+            Assert.AreNotEqual(cut.Name, read.Name);
+        }
     }
 }
