@@ -155,9 +155,12 @@ namespace Toolbox.Xml.Settings
         /// </summary>
         public static void Clear()
         {
-            foreach (var filename in Directory.GetFiles(FolderName, "*.xml"))
+            if (Directory.Exists(FolderName))
             {
-                File.Delete(filename);
+                foreach (var filename in Directory.GetFiles(FolderName, "*.xml"))
+                {
+                    File.Delete(filename);
+                }
             }
             Settings.Clear();
         }
