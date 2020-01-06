@@ -9,6 +9,8 @@ namespace Toolbox.Xml.Settings.Test
         [TestMethod]
         public void GetDefault()
         {
+            UserSettings.Clear();
+
             var cut = UserSettings.Get<SimpleUserSetting>();
 
             // do nothing

@@ -8,6 +8,8 @@ namespace Toolbox.Xml.Settings.Test
         [TestMethod]
         public void GetDefault()
         {
+            GlobalSettings.Clear();
+
             var cut = GlobalSettings.Get<SimpleGlobalSetting>();
 
             Assert.AreEqual(cut.Information, SimpleGlobalSetting.DefaultInformation);
