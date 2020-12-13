@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -12,13 +12,13 @@
     <Copyright>Copyright 2020 by Calteo</Copyright>
     <PackageReleaseNotes>serialization xml settings global user</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/Calteo/Toolbox.Xml.Settings</PackageProjectUrl>
-    <PackageIcon>app.ico</PackageIcon>
+    <PackageIcon>toolbox.png</PackageIcon>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <FileVersion>1.0.0.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\app.ico">
+    <None Include="Images\toolbox.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
