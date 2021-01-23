@@ -72,12 +72,15 @@ namespace Toolbox.Xml.Settings
 
         private static string GetKey<TS>(string name)
         {
-            return $"{typeof(TS).FullName}${name}";
+            return string.IsNullOrEmpty(name) ? $"{typeof(TS).FullName}" : $"{typeof(TS).FullName}${name}";
         }
 
         private static string GetFileName(Type type, string name)
         {
-            return Path.Combine(FolderName, string.Concat(type.FullName, name, ".xml"));
+            var filename = type.FullName;
+            if (!string.IsNullOrEmpty(name))
+                filename += "." + name;
+            return Path.Combine(FolderName, filename + ".xml");
         }
 
         /// <summary>

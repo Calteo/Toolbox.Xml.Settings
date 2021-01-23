@@ -32,6 +32,20 @@ namespace Toolbox.Xml.Settings.Test
         }
 
         [TestMethod]
+        public void SaveNamedAndReload()
+        {
+            const string name = nameof(SaveNamedAndReload);
+            var cut = UserSettings.Get<SimpleUserSetting>(name);
+
+            cut.Name = "SomeTest";
+            cut.Save();
+
+            var read = UserSettings.Get<SimpleUserSetting>(name, true);
+
+            Assert.AreEqual(cut.Name, read.Name);
+        }
+
+        [TestMethod]
         public void TestClear()
         {
             var cut = UserSettings.Get<SimpleUserSetting>();
