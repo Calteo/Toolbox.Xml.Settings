@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Drawing;
 
 namespace Toolbox.Xml.Settings.Test
 {
@@ -8,5 +9,7 @@ namespace Toolbox.Xml.Settings.Test
 
         [DefaultValue(DefaultName)]
         public string Name { get; set; }
+
+        public Point Location { get; set; }
     }
 }

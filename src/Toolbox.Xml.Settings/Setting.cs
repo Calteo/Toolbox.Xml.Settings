@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 
@@ -7,6 +8,7 @@ namespace Toolbox.Xml.Settings
     /// <summary>
     /// Base class for settings.
     /// </summary>
+    [DebuggerDisplay("{GetType().Fullname,nq}.{Name}")]
     public abstract class Setting
     {
         internal string Name { get; set; }
