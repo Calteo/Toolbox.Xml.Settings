@@ -111,6 +111,7 @@ namespace Toolbox.Xml.Settings
                     {
                         var formatter = new XmlFormatter<TS>();
                         setting = formatter.Deserialize(filename);
+                        setting.Name = name;
                     }
                     catch (Exception exception)
                     {
