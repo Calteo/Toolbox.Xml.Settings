@@ -146,6 +146,8 @@ namespace Toolbox.Xml.Settings
             var filename = GetFileName(type, setting.Name);
             var directory = Path.GetDirectoryName(filename);
 
+            Trace.WriteLine($"save file '{filename}'", TypeName);
+
             if (!Directory.Exists(directory))
                 Directory.CreateDirectory(directory);
 

@@ -8,7 +8,7 @@ namespace Toolbox.Xml.Settings
     /// <summary>
     /// Base class for settings.
     /// </summary>
-    [DebuggerDisplay("{GetType().Fullname,nq}.{Name}")]
+    [DebuggerDisplay("{GetType().FullName,nq}.{Name}")]
     public abstract class Setting
     {
         internal string Name { get; set; }
