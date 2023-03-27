@@ -32,7 +32,7 @@ jobs:
         dotnet-version: 6.0.x
 
     - name: Install NuGet
-      uses: NuGet/setup-nuget@v1.0.5
+      uses: NuGet/setup-nuget@v1.1.1
 
     - name: Install DocFX
       uses: crazy-max/ghaction-chocolatey@v1
@@ -52,7 +52,7 @@ jobs:
     
     # Compile the solution
     - name: Compile solution
-      run: dotnet build src\Toolbox.Core.sln -c Release -o output
+      run: dotnet build src\Toolbox.Xml.Settings.sln -c Release -o output
 
     # Test?
     
