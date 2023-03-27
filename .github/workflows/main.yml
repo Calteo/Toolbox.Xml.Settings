@@ -1,0 +1,96 @@
+name: Toolbox.Xml.Settings
+
+on:
+  push:
+    branches: [ "main" ]
+  
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+env:
+  BUILD_VERSION: "1.1.${{ github.run_number }}"
+
+jobs:
+
+  build:
+    name: Build
+    runs-on: windows-latest  
+
+    steps:
+    # - name: List env
+    #  run: env
+      
+    # setup
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Install .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 6.0.x
+
+    - name: Install NuGet
+      uses: NuGet/setup-nuget@v1.0.5
+
+    - name: Install DocFX
+      uses: crazy-max/ghaction-chocolatey@v1
+      with:
+        args: install docfx
+
+    # - name: Echo Version 
+    #  run: echo "Version = ${{ env.BUILD_VERSION }}"
+    
+    - name: Version Visual Studio SDK projects
+      uses: roryprimrose/set-vs-sdk-project-version@v1.0.3
+      with:
+        version: "${{ env.BUILD_VERSION }}.0"
+        assemblyVersion: "${{ env.BUILD_VERSION }}.0"
+        fileVersion: "${{ env.BUILD_VERSION }}.0"
+        informationalVersion: "${{ env.BUILD_VERSION }}.0"
+    
+    # Compile the solution
+    - name: Compile solution
+      run: dotnet build src\Toolbox.Core.sln -c Release -o output
+
+    # Test?
+    
+    # Documentation
+    - name: Build Documentation
+      working-directory: docfx_project
+      run: docfx docfx.json
+      continue-on-error: false
+
+    - name: Remove unnecessary files
+      run: del output\*.pdb,output\*.dev.json,output\*.deps.json 
+
+    - name: Zip binaries
+      uses: TheDoctor0/zip-release@0.6.2
+      with:
+        filename: 'Toolbox.Xml.Settings.${{ env.BUILD_VERSION }}-binary.zip'
+        directory: output
+        path: Toolbox.Xml.Settings.dll
+        type: 'zip'
+
+    # create github release
+    - name: Create Release
+      uses: softprops/action-gh-release@v1        
+      with:
+        name: Release ${{ env.BUILD_VERSION }}
+        tag_name: ${{ env.BUILD_VERSION }}
+        files: |
+          ./output/Toolbox.Xml.Settings.${{ env.BUILD_VERSION }}-binary.zip
+          ./output/Toolbox.Xml.Settings.${{ env.BUILD_VERSION }}.nupkg      
+
+    - name: Pulish NuGet
+      run: nuget push **\*.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_TOKEN}}
+
+    # publish documentation
+    - name: Publish documentation
+      if: github.event_name == 'push'
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: docfx_project/_site
+        force_orphan: true
