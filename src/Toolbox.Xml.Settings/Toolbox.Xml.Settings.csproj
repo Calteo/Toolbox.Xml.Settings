@@ -6,7 +6,7 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Authors>Calteo</Authors>
-    <Company>Calteo</Company>
+    <Company>$(Authors)</Company>
     <Version>1.0.1</Version>
     <Description>serializes settings to xml</Description>
     <Copyright>Copyright 2020 by Calteo</Copyright>
@@ -15,6 +15,8 @@
     <PackageIcon>toolbox.png</PackageIcon>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <FileVersion>1.0.0.0</FileVersion>
+    <Title></Title>
+    <RepositoryUrl>https://github.com/Calteo/Toolbox.Xml.Settings</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
