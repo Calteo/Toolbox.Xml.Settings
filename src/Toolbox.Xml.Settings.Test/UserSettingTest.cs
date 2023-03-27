@@ -1,6 +1,4 @@
-﻿using System;
-using System.Drawing;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Drawing;
 
 namespace Toolbox.Xml.Settings.Test
 {
@@ -34,15 +32,69 @@ namespace Toolbox.Xml.Settings.Test
         }
 
         [TestMethod]
+        public void ResetWithEvent()
+        {
+            const string name = nameof(ResetWithEvent);
+            var cut = UserSettings.Get<SimpleUserSetting>(name);
+
+            cut.Name = "SomeTest";
+            cut.Save();
+
+            var fired = 0;
+
+            cut.Resetted += s =>
+            {
+                Assert.AreSame(cut, s);
+                fired++;
+            };
+
+            cut.Reset();
+            
+            Assert.AreEqual(1, fired);
+        }
+
+
+        [TestMethod]
+        public void SaveWithEvents()
+        {
+            const string name = nameof(SaveWithEvents);
+
+            var cut = UserSettings.Get<SimpleUserSetting>(name);
+
+            var globalFired = 0;
+            var fired = 0;
+
+            UserSettings.Saved += s => 
+            {
+                Assert.AreSame(cut, s);
+                globalFired++;
+            };
+
+            cut.Saved += s =>
+            {
+                Assert.AreSame(cut, s);
+                fired++;
+            };
+
+            cut.Name = "SomeTest";
+            cut.Save();
+
+            Assert.AreEqual(1, globalFired);
+            Assert.AreEqual(1, fired);
+        }
+
+        [TestMethod]
         public void TestClear()
         {
-            var cut = UserSettings.Get<SimpleUserSetting>();
+            var settingName = nameof(TestClear);
+            var cut = UserSettings.Get<SimpleUserSetting>(settingName);
 
             cut.Name = "Some Name";
             cut.Save();
+            
             UserSettings.Clear();
 
-            var read = UserSettings.Get<SimpleUserSetting>();
+            var read = UserSettings.Get<SimpleUserSetting>(settingName);
             
             Assert.AreNotEqual(cut.Name, read.Name);
         }

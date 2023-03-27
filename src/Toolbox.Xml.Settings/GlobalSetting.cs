@@ -8,6 +8,10 @@
         /// <summary>
         /// Saves the setting in the application wide folder
         /// </summary>
-        public override void Save() => GlobalSettings.Save(this);
+        public override void Save()
+        {
+            GlobalSettings.Save(this);
+            base.Save();
+        }
     }
 }

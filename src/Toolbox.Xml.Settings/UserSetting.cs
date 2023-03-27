@@ -7,7 +7,8 @@
     {
         public override void Save()
         {
-            UserSettings.Save(this);
+            UserSettings.Save(this);  
+            base.Save();
         }
     }
 }

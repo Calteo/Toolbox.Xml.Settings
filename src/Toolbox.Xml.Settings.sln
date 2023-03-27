@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30717.126
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toolbox.Xml.Settings", "Toolbox.Xml.Settings\Toolbox.Xml.Settings.csproj", "{8526385C-BF54-4ABA-A861-38C0F123F6AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Toolbox.Xml.Settings", "Toolbox.Xml.Settings\Toolbox.Xml.Settings.csproj", "{8526385C-BF54-4ABA-A861-38C0F123F6AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toolbox.Xml.Settings.Test", "Toolbox.Xml.Settings.Test\Toolbox.Xml.Settings.Test.csproj", "{ACB04E55-3369-489F-B8A9-7EA29429BB98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Toolbox.Xml.Settings.Test", "Toolbox.Xml.Settings.Test\Toolbox.Xml.Settings.Test.csproj", "{ACB04E55-3369-489F-B8A9-7EA29429BB98}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

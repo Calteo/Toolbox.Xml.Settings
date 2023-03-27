@@ -68,6 +68,8 @@ namespace Toolbox.Xml.Settings
             FolderName = Path.Combine(Environment.GetFolderPath(Folder), ApplicationName);
         }
 
+        public static event SettingHandler<T> Saved;        
+
         private static Dictionary<string, T> Settings { get; } = new Dictionary<string, T>();
 
         private static string GetKey<TS>(string name)
@@ -154,6 +156,8 @@ namespace Toolbox.Xml.Settings
 
             var formatter = new XmlFormatter(type);
             formatter.Serialize(setting, filename);
+
+            Saved?.Invoke(setting);
         }
 
         /// <summary>

@@ -27,11 +27,28 @@ namespace Toolbox.Xml.Settings
                 var value = property.GetCustomAttribute<DefaultValueAttribute>(true).Value;
                 property.SetValue(this, value);
             }
+
+            Resetted?.Invoke(this);
         }
+
+        /// <summary>
+        /// Fired if settings are resetted.
+        /// </summary>
+        /// <see cref="Reset"/>
+        public event SettingHandler Resetted;
 
         /// <summary>
         /// Saves the setting object to disk
         /// </summary>
-        public abstract void Save();
+        public virtual void Save()
+        {
+            Saved?.Invoke(this);
+        }
+
+        /// <summary>
+        /// Fired if settigs are saved.
+        /// </summary>
+        /// <see cref="Save"/>
+        public event SettingHandler Saved;
     }
 }

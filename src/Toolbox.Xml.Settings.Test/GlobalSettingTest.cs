@@ -1,6 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace Toolbox.Xml.Settings.Test
+﻿namespace Toolbox.Xml.Settings.Test
 {
     [TestClass]
     public class GlobalSettingTest
