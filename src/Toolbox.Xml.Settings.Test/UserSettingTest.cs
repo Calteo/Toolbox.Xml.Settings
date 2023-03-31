@@ -95,7 +95,8 @@ namespace Toolbox.Xml.Settings.Test
             UserSettings.Clear();
 
             var read = UserSettings.Get<SimpleUserSetting>(settingName);
-            
+
+            Assert.AreNotSame(cut, read);
             Assert.AreNotEqual(cut.Name, read.Name);
         }
 
@@ -115,6 +116,25 @@ namespace Toolbox.Xml.Settings.Test
 
             Assert.AreEqual(cut.Name, read.Name);
             Assert.AreEqual(cut.Location, read.Location);
+        }
+
+        [TestMethod]
+        public void SaveLoadObfuscatedSettings()
+        {
+            var setting = UserSettings.Get<LogonSetting>(nameof(SaveLoadObfuscatedSettings));
+
+            const string User = "TestUser";
+            const string Password = "TestUserPassword";
+
+            setting.User = User;
+            setting.Password = Password;
+
+            setting.Save();
+
+            var cut = UserSettings.Get<LogonSetting>(nameof(SaveLoadObfuscatedSettings), true);
+
+            Assert.AreEqual(User, cut.User);
+            Assert.AreEqual(Password, cut.Password);
         }
 
     }
